@@ -11,12 +11,13 @@ import patterns.proxy.SecureNotificationProxy;
 import patterns.strategy.DiscountStrategy;
 import patterns.strategy.RegularDiscountStrategy;
 import patterns.strategy.VipDiscountStrategy;
+import java.math.BigDecimal;
 
 public class Main {
     public static void main(String[] args) {
-        Order order = new OrderBuilder()
+        Order order = Order.builder()
                 .customerEmail("client@example.com")
-                .amount(1000)
+                .amount(new BigDecimal("1000"))
                 .vip(true)
                 .build();
 
@@ -28,7 +29,7 @@ public class Main {
                 ? new VipDiscountStrategy()
                 : new RegularDiscountStrategy();
 
-        double finalAmount = discountStrategy.applyDiscount(order.amount());
+        BigDecimal finalAmount = discountStrategy.applyDiscount(order.amount());
 
         NotificationSender sender = new EmailServiceAdapter(new ExternalEmailService());
         sender = new LoggingNotificationDecorator(sender);

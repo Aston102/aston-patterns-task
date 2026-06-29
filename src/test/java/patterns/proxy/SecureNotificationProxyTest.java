@@ -11,7 +11,7 @@ import static org.mockito.Mockito.verify;
 class SecureNotificationProxyTest {
 
     @Test
-    void shouldSendNotificationWhenAccessAllowed() {
+    void whenSendNotificationWithAccessAllowed_thenCallWrappedSender() {
         NotificationSender sender = mock(NotificationSender.class);
         NotificationSender proxy = new SecureNotificationProxy(sender, true);
 
@@ -21,7 +21,7 @@ class SecureNotificationProxyTest {
     }
 
     @Test
-    void shouldThrowExceptionWhenAccessDenied() {
+    void whenSendNotificationWithAccessDenied_thenThrowException() {
         NotificationSender sender = mock(NotificationSender.class);
         NotificationSender proxy = new SecureNotificationProxy(sender, false);
 

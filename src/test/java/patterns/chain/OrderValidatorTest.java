@@ -1,6 +1,6 @@
 package patterns.chain;
 
-
+import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 import patterns.Order;
 import patterns.OrderBuilder;
@@ -11,10 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class OrderValidatorTest {
 
     @Test
-    void shouldPassValidationWhenOrderIsValid() {
-        Order order = new OrderBuilder()
+    void whenValidateCorrectOrder_thenDoesNotThrowException() {
+        Order order = Order.builder()
                 .customerEmail("client@example.com")
-                .amount(1000)
+                .amount(new BigDecimal("1000"))
                 .vip(false)
                 .build();
 
@@ -25,10 +25,10 @@ class OrderValidatorTest {
     }
 
     @Test
-    void shouldThrowExceptionWhenAmountIsInvalid() {
-        Order order = new OrderBuilder()
+    void whenValidateOrderWithInvalidAmount_thenThrowException() {
+        Order order = Order.builder()
                 .customerEmail("client@example.com")
-                .amount(0)
+                .amount(BigDecimal.ZERO)
                 .vip(false)
                 .build();
 
@@ -39,10 +39,10 @@ class OrderValidatorTest {
     }
 
     @Test
-    void shouldThrowExceptionWhenEmailIsInvalid() {
-        Order order = new OrderBuilder()
+    void whenValidateOrderWithInvalidEmail_thenThrowException() {
+        Order order = Order.builder()
                 .customerEmail("invalid-email")
-                .amount(1000)
+                .amount(new BigDecimal("1000"))
                 .vip(false)
                 .build();
 

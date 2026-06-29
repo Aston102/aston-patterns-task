@@ -2,26 +2,26 @@ package patterns.strategy;
 
 
 import org.junit.jupiter.api.Test;
-
+import java.math.BigDecimal;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DiscountStrategyTest {
 
     @Test
-    void shouldApplyRegularDiscount() {
+    void whenApplyRegularDiscount_thenReturnAmountWithRegularDiscount() {
         DiscountStrategy strategy = new RegularDiscountStrategy();
 
-        double result = strategy.applyDiscount(1000);
+        BigDecimal result  = strategy.applyDiscount(new BigDecimal("1000"));
 
-        assertEquals(950, result);
+        assertEquals(new BigDecimal("950.00"), result);
     }
 
     @Test
-    void shouldApplyVipDiscount() {
+    void whenApplyVipDiscount_thenReturnAmountWithVipDiscount() {
         DiscountStrategy strategy = new VipDiscountStrategy();
 
-        double result = strategy.applyDiscount(1000);
+        BigDecimal result  = strategy.applyDiscount(new BigDecimal("1000"));
 
-        assertEquals(800, result);
+        assertEquals(new BigDecimal("800.00"), result);
     }
 }

@@ -1,4 +1,10 @@
 package patterns;
 
-public record Order(String customerEmail, double amount, boolean vip) {
+import java.math.BigDecimal;
+
+public record Order(String customerEmail, BigDecimal amount, boolean vip) {
+
+    public static OrderBuilder builder() {
+        return new OrderBuilder();
+    }
 }

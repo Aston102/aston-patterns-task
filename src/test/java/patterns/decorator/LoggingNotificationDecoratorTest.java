@@ -9,7 +9,7 @@ import static org.mockito.Mockito.verify;
 class LoggingNotificationDecoratorTest {
 
     @Test
-    void shouldCallWrappedSender() {
+    void whenSendNotificationThroughDecorator_thenCallWrappedSender() {
         NotificationSender sender = mock(NotificationSender.class);
         NotificationSender decoratedSender = new LoggingNotificationDecorator(sender);
 

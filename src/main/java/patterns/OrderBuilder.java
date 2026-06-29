@@ -1,8 +1,10 @@
 package patterns;
 
+import java.math.BigDecimal;
+
 public class OrderBuilder {
     private String customerEmail;
-    private double amount;
+    private BigDecimal amount;
     private boolean vip;
 
     public OrderBuilder customerEmail(String customerEmail) {
@@ -10,7 +12,7 @@ public class OrderBuilder {
         return this;
     }
 
-    public OrderBuilder amount(double amount) {
+    public OrderBuilder amount(BigDecimal amount) {
         this.amount = amount;
         return this;
     }

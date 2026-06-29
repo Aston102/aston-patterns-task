@@ -1,5 +1,6 @@
 package patterns.strategy;
+import java.math.BigDecimal;
 
 public interface DiscountStrategy {
-    double applyDiscount(double amount);
+    BigDecimal applyDiscount(BigDecimal amount);
 }

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 class EmailServiceAdapterTest {
 
     @Test
-    void shouldSendNotificationThroughAdapter() {
+    void whenSendNotificationThroughAdapter_thenDoesNotThrowException() {
         ExternalEmailService externalEmailService = new ExternalEmailService();
         NotificationSender sender = new EmailServiceAdapter(externalEmailService);
 
